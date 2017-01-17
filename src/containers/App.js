@@ -42,7 +42,6 @@ export default class Items extends Component {
   render() {
     return (
       <div className="sscontents dill_down">
-        <button onClick={this.testClick}>test button</button>
         {this.props.items.map((item) => {
           return (<Item key={item.id} item={item} />);
         })}
