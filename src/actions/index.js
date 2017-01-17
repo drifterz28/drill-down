@@ -1,7 +1,3 @@
-export { fetchPkg } from './fetchPkg'
-export { receivePkg } from './receivePkg'
-
-export { fetchPackages } from './fetchPackages'
-export { receivePackages } from './receivePackages'
-
-export { receiveFetching } from './receiveFetching'
+export { fetchedItems } from './fetchedItems';
+export { receiveItems } from './receiveItems';
+export { addCount } from './count';

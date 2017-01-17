@@ -1,43 +1,51 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { fetchPackages } from '../actions'
-import CSSModules from 'react-css-modules'
-import SiteSidebar from '../components/SiteSidebar'
-import styles from './App.css'
-import { getSiteUrl } from '../lib/site'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchedItems, addCount } from '../actions';
+
+import Item from '../components/item';
 
 const mapDispatchToProps = dispatch => {
   return {
     actions: {
-      fetchPackages: (keyword) => dispatch(fetchPackages(getSiteUrl(), keyword)),
+      fetchedItems: (data) => dispatch(fetchedItems(data)),
+      addCount: () => dispatch(addCount())
     }
   }
 }
 
-@connect(null, mapDispatchToProps)
-@CSSModules(styles)
-export default class App extends Component {
+@connect(state => ({
+    ...state
+  }),
+  mapDispatchToProps
+)
 
-  static fetchData({ params, store, url }) {
-    return store.dispatch( fetchPackages(url, params.keyword) )
-  }
+export default class Items extends Component {
+
+  // static fetchData({ params, store, url }) {
+  //   return store.dispatch( fetchedItems(data) )
+  // }
 
   componentDidMount() {
-    const { actions, params } = this.props
-    actions.fetchPackages(params.keyword)
+    const { actions } = this.props;
+    actions.fetchedItems(data);
   }
 
-  componentWillReceiveProps (nextProps) {
-    const { params } = nextProps
-    const { actions } = this.props
-    actions.fetchPackages(params.keyword)
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps')
   }
-
+  testClick = () => {
+    const { actions } = this.props;
+    console.log(actions);
+    actions.addCount();
+  }
   render() {
     return (
-      <div styleName='AppContainer'>
-        <SiteSidebar />
-        <div styleName='Main'>{this.props.children}</div>
+      <div className="sscontents dill_down">
+        <button onClick={this.testClick}>test button</button>
+        {this.props.items.map((item) => {
+          return (<Item key={item.id} item={item} />);
+        })}
       </div>
     )
   }

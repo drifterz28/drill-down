@@ -6,9 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const env = process.env.NODE_ENV || 'prod'
 
 function plugins() {
-  if(env === 'prod'){
+  if(env === 'prod') {
     return [
-      new ExtractTextPlugin('style.css', { allChunks: true }),
+      //new ExtractTextPlugin('style.css', { allChunks: true }),
       new webpack.optimize.DedupePlugin(),
       new webpack.DefinePlugin({ 'process.env':{ 'NODE_ENV': JSON.stringify('production')} }),
       new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
@@ -16,7 +16,7 @@ function plugins() {
     ]
   }
   return [
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+    //new ExtractTextPlugin('style.css', { allChunks: true }),
     new HtmlWebpackPlugin({ title: 'Example', template: './index.html' })
   ]
 }
@@ -40,7 +40,7 @@ function loaders() {
 }
 
 function entry() {
-  if(env === 'prod'){
+  if(env === 'prod') {
     return {
       app: './index',
       vendor: [ 'react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux']
@@ -50,7 +50,7 @@ function entry() {
 }
 
 function output() {
-  if(env === 'prod'){
+  if(env === 'prod') {
     return {
       path: path.join(__dirname, 'public'),
       filename: 'bundle.js',
@@ -64,8 +64,11 @@ function output() {
   }
 }
 
-var devtool = 'inline-source-map'
-if(env === 'prod'){ devtool = 'hidden-sourcemap' }
+var devtool = 'inline-source-map';
+
+if(env === 'prod') {
+  devtool = 'hidden-sourcemap';
+}
 
 /* config */
 module.exports = {

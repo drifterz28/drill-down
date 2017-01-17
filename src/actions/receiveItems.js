@@ -1,6 +1,6 @@
 const constants = require('../constants')
 
-export function receivePackages(entities, keyword) {
+export function receiveItems(entities, keyword) {
   return {
     type: constants.RECEIVE_PACKAGES,
     entities,
