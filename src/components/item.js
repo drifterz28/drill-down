@@ -16,7 +16,7 @@ const Item = ({item}) => {
           <div className="pdShowForDiscountedUser" style={{display: 'none'}}>
             <div className="pdDynamicPriceWrapperSection">
               <span className="pdDynamicPriceLabelSection">Wholesale:&nbsp;</span>
-              <span className="pdDynamicPrice pdDynamicPriceSection" productid={link} baseprice="24.9" retailprice="24.9" />
+              <span className="pdDynamicPrice pdDynamicPriceSection" data-productid={item.id} data-baseprice="24.9" data-retailprice="24.9" />
             </div>
           </div>
         </div>
@@ -27,9 +27,9 @@ const Item = ({item}) => {
         <input name="vwitem" type="hidden" value={item.id} />
         <input type="hidden" name=".autodone" value={'http://www.westechrigging.com/' + item.id + '.html'} />
       </form>
-      <div id="ys_promoitem" itemid={link} itemcode="IMP-CH012SS316" />
+      <div id="ys_promoitem" data-itemid={link} data-itemcode="IMP-CH012SS316" />
     </div>
-  )
+  );
 };
 
 export default Item;

@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchedItems } from '../actions'
-//import CSSModules from 'react-css-modules'
 
-import Item from '../components/item';
+import Selected from '../components/selected';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -22,24 +21,36 @@ const mapDispatchToProps = dispatch => {
 
 export default class Options extends Component {
 
-  static fetchData({ params, store, url }) {
-    // return store.dispatch( fetchedItems(data) )
-  }
-
-  componentDidMount() {
-    // const { actions } = this.props
-    // actions.fetchedItems(data);
-  }
-
   componentWillReceiveProps(nextProps) {
     console.log('componentWillReceiveProps')
   }
+  renderOptionList = () => {
 
+  }
+  handleClick = (e) => {
+    e.preventDefault();
+    console.log(e)
+  }
   render() {
-    console.log(this.props)
+    const {options, selected} = this.props;
     return (
-      <div className="">
-        {this.props.count}
+      <div className="drillDownOptions">
+        {!!selected.length && <Selected selected={selected} />}
+        <div className="">
+          {options.map((option, i) => {
+            return (
+              <div key={i}>
+                <h2>{option.label}</h2>
+                <div className="optionList">
+                {option.list.map((list, i) => {
+                  return (<a key={i} href="#" onClick={this.handleClick} data-cat={option.id} data-value={list}>{list} (1)</a>);
+                })}
+                </div>
+              </div>
+            )
+          })
+          }
+        </div>
       </div>
     )
   }

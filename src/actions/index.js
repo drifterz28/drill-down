@@ -1,3 +1,3 @@
 export { fetchedItems } from './fetchedItems';
 export { receiveItems } from './receiveItems';
-export { addCount } from './count';
+export { selected } from './selected';

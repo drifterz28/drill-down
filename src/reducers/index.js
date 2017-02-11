@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_COUNT } from '../constants'
+import { GET_ITEMS, SELECTED } from '../constants'
 
 export const items = function(state = [], action) {
   switch (action.type) {
@@ -22,13 +22,31 @@ export const options = function(state = [], action) {
   }
 };
 
-export const count = function(state = 0, action) {
-  console.log(action)
+export const selected = function(state = [], action) {
   switch (action.type) {
-    case ADD_COUNT:
-      return action.count;
+  case SELECTED:
+      return action.selected;
       break;
     default:
       return state;
   }
 };
+
+/*
+const actions = {
+
+  [Actions.SET_CREDIT_CARDS](state, { cards }) {
+    return [ ...cards ];
+  },
+
+  [Actions.FETCH_CREDIT_CARDS]() {
+    return false;
+  }
+
+};
+
+export default function creditCardsReducer(state = initialState, action) {
+  const reduce = actions[action.type];
+  return reduce ? reduce(state, action) : state;
+}
+*/

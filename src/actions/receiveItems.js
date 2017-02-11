@@ -6,4 +6,4 @@ export function receiveItems(entities, keyword) {
     entities,
     keyword
   }
-}
+};
