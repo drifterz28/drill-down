@@ -36,6 +36,7 @@ const sortOthers = (option) => {
 }
 
 export const itemOptions = (items, options) => {
+  console.log(items)
   items.map(item => {
     options.map(option => {
       if(!option.list) {

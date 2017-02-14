@@ -22,7 +22,8 @@ export const options = function(state = [], action) {
   }
 };
 
-export const selected = function(state = [], action) {
+export const selected = function(state = {}, action) {
+  console.log('action', {action})
   switch (action.type) {
   case SELECTED:
       return action.selected;

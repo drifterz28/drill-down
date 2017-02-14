@@ -4,7 +4,7 @@ import { itemOptions } from '../adapters/itemOptions';
 
 export function fetchedItems(data) {
   return {
-    type: 'GET_ITEMS',
+    type: constants.GET_ITEMS,
     items: data.items,
     options: itemOptions(data.items, data.options)
   };
